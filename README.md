@@ -2,7 +2,7 @@
 
 ## Discussion
 
-The Iris dataset (also known as Fisher's Iris dataset) is a dataset made famous by Fisher in his paper *The uses of multiple measurements in taxonomic problems*, published in September 1936^1^. The dataset consists of 150 samples of iris flowers and records their species, sepal length and width, and petal length and width. Originally collected by Anderson for his 1936 discussion^2^ of the species problem^3^, Fisher used the dataset to demonstrate linear discriminant analysis^4^.
+The Iris dataset (also known as Fisher's Iris dataset) is a dataset made famous by Fisher in his paper *The uses of multiple measurements in taxonomic problems*, published in September 1936<sup>1</sup>. The dataset consists of 150 samples of iris flowers and records their species, sepal length and width, and petal length and width. Originally collected by Anderson for his 1936 discussion<sup>2</sup> of the species problem<sup>3</sup>, Fisher used the dataset to demonstrate linear discriminant analysis<sup>4</sup>.
 
 Of the three species listed in the data set, two had samples collected from the same colony (*Iris setosa* and *Iris veriscolor*), while samples of the third (*Iris virginia*) were collected from a differnt colony. Fisher notes in Section VI of his paper that this "might considerably disturb both the mean values and their variabilities".
 

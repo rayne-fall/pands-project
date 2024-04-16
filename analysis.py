@@ -2,8 +2,6 @@
 # Author: Sylvia Chapman Kent
 # analyses Fisher's Iris data set
 
-# Program no longer layers each histogram over the previous ones
-
 # importing the modules we'll use during the analysis
 import matplotlib.pyplot as plt
 import numpy as np
@@ -14,35 +12,80 @@ df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/
 
 # creating a function to generate histograms as we'll need one for each variable
 def generate_hist(variable):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots() # stateless setup required as stateful setup plots each histogram on the one set of axes
     histogram_data = variable # get the data for the histogram
     histogram_data = histogram_data.to_numpy() # convert data frame to array so we can plot it
     ax.hist(histogram_data) # create the histogram
     ax.set_xlabel("Number of flowers") # label the x axis
-    ax.set_ylabel(f"{plot_name} (cm)") # label the y axis based on the variable we're looking at
+    ax.set_ylabel(plot_name) # label the y axis based on the variable we're looking at
     ax.set_title(plot_name) # put a title on the plot
-    fig.savefig(plot_name) # save the plot as a PNG file 
-'''   
-# creating another function to generate scatter plots
-def generate_scatter(x,y):
-    x = np.array[()]
-    y = np.array[()]
-    plt.scatter(x,y) # creates the scatter plot
-    plt.show() # shows the scatter plot
-'''
+    fig.savefig(f"{plot_name}.png") # save the plot as a PNG file 
 
 variable = df["sepal_length"] # choose the variable to plot
-plot_name = ("Sepal Length") # give a filename for the PNG
+plot_name = ("Sepal Length (cm)") # give a filename for the PNG
 histogram = generate_hist(variable) # call the histogram function defined earlier
 
 variable = df["sepal_width"] 
-plot_name = ("Sepal Width") 
+plot_name = ("Sepal Width (cm)") 
 histogram = generate_hist(variable) 
 
 variable = df["petal_length"] 
-plot_name = ("Petal Length") 
+plot_name = ("Petal Length (cm)") 
 histogram = generate_hist(variable) 
 
 variable = df["petal_width"] 
-plot_name = ("Petal Width") 
+plot_name = ("Petal Width (cm)") 
 histogram = generate_hist(variable) 
+
+# creating another function to generate scatter plots
+def generate_scatter(variable1,variable2): 
+    fig, ax = plt.subplots()
+    # get the x and y coordinates
+    x_scatter = variable1 
+    y_scatter = variable2
+    # convert the data frames to arrays
+    x_scatter = x_scatter.to_numpy()
+    y_scatter = y_scatter.to_numpy()
+    ax.scatter(x_scatter,y_scatter) # create the scatter plot
+    # label the axes
+    ax.set_xlabel(x_axis)
+    ax.set_ylabel(y_axis)
+    # give the plot a title
+    ax.set_title(f"{x_axis} vs. {y_axis}")
+    fig.savefig("placeholder.png") # save the scatter plot as a PNG file
+
+variable1 = df["sepal_length"]
+variable2 = df["sepal_width"]
+x_axis = ("Sepal Length (cm)")
+y_axis  = ("Sepal Width (cm)")
+scatter = generate_scatter(variable1,variable2)
+
+variable1 = df["petal_length"]
+variable2 = df["petal_width"]
+x_axis = ("Petal Length (cm)")
+y_axis  = ("Petal Width (cm)")
+scatter = generate_scatter(variable1,variable2)
+
+variable1 = df["sepal_length"]
+variable2 = df["petal_width"]
+x_axis = ("Sepal Length (cm)")
+y_axis  = ("Petal Width (cm)")
+scatter = generate_scatter(variable1,variable2)
+
+variable1 = df["petal_length"]
+variable2 = df["sepal_width"]
+x_axis = ("Petal Length (cm)")
+y_axis  = ("Sepal Width (cm)")
+scatter = generate_scatter(variable1,variable2)
+
+variable1 = df["sepal_length"]
+variable2 = df["petal_length"]
+x_axis = ("Sepal Length (cm)")
+y_axis  = ("Petal Length (cm)")
+scatter = generate_scatter(variable1,variable2)
+
+variable1 = df["petal_width"]
+variable2 = df["sepal_width"]
+x_axis = ("Petal Width (cm)")
+y_axis  = ("Sepal Width (cm)")
+scatter = generate_scatter(variable1,variable2)

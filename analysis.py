@@ -13,9 +13,9 @@ df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/
 # create the file we'll save a summary of the variables in and open it in write mode
 file = open("Variable Summary.txt", "w")
 # give an overview of tha data annd add the averages for each variable to the text file
-file.write(f"This is an overview of the data in the set: \n\n{df} \n\nThese are the average values for each of the variables in this dataset: \n\n{df.describe()}")
+file.write(f"This is an overview of the data in the set: \n\n{df}\n\nThese are the average values for each of the variables in this dataset: \n\n{df.describe()}\n\nCalculating the correlation coefficients for each pair of variables allows us to see if there's any correlation between them.\nThe closer the coefficient is to 1/-1, the stronger the correlation.\nThe closer the coefficient is to 0, the weaker the correlation")
 # close the text file
-file.close
+file.close()
 
 # creating a function to generate histograms as we'll need one for each variable
 def generate_hist(variable):
@@ -53,18 +53,33 @@ def generate_scatter(variable1,variable2):
     # convert the data frames to arrays
     x_scatter = x_scatter.to_numpy()
     y_scatter = y_scatter.to_numpy()
-    ax.scatter(x_scatter,y_scatter) # create the scatter plot
+    # define m and c for a line of best fit. the 1 means the highest exponent for x will be 1, giving a straight line.
+    m, c = np.polyfit(x_scatter, y_scatter, 1)
+    # create the scatter plot
+    ax.scatter(x_scatter,y_scatter) 
+    # plot the line of best fit
+    ax.plot(x_scatter, m*x_scatter +c, color = "#c201a4")
     # label the axes
     ax.set_xlabel(x_axis)
     ax.set_ylabel(y_axis)
     # give the plot a title
     ax.set_title(f"{x_axis} vs. {y_axis}")
-    fig.savefig("placeholder.png") # save the scatter plot as a PNG file
+     # save the scatter plot as a PNG file
+    fig.savefig(f"{x_axis} vs. {y_axis}.png")
+    # open the txt file from earlier in amend mode
+    file = open("Variable Summary.txt", "a")
+    # add correlation coefficient of x and y values
+    file.write(f"\n\nThis is the correlation between {x_axis} and {y_axis}: \n\n{np.corrcoef(x_scatter, y_scatter)}")
+    # close the txt file
+    file.close()
 
+# choose the variables to plot
 variable1 = df["sepal_length"]
 variable2 = df["sepal_width"]
+# label the axes
 x_axis = ("Sepal Length (cm)")
 y_axis  = ("Sepal Width (cm)")
+# call the scatter function
 scatter = generate_scatter(variable1,variable2)
 
 variable1 = df["petal_length"]
@@ -96,4 +111,5 @@ variable2 = df["sepal_width"]
 x_axis = ("Petal Width (cm)")
 y_axis  = ("Sepal Width (cm)")
 scatter = generate_scatter(variable1,variable2)
+
 

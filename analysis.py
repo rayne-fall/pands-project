@@ -10,6 +10,13 @@ import pandas as pd
 # loading the iris data set
 df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv")
 
+# create the file we'll save a summary of the variables in and open it in write mode
+file = open("Variable Summary.txt", "w")
+# give an overview of tha data annd add the averages for each variable to the text file
+file.write(f"This is an overview of the data in the set: \n\n{df} \n\nThese are the average values for each of the variables in this dataset: \n\n{df.describe()}")
+# close the text file
+file.close
+
 # creating a function to generate histograms as we'll need one for each variable
 def generate_hist(variable):
     fig, ax = plt.subplots() # stateless setup required as stateful setup plots each histogram on the one set of axes
@@ -89,3 +96,4 @@ variable2 = df["sepal_width"]
 x_axis = ("Petal Width (cm)")
 y_axis  = ("Sepal Width (cm)")
 scatter = generate_scatter(variable1,variable2)
+

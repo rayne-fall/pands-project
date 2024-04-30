@@ -12,3 +12,4 @@ Of the three species listed in the data set, two had samples collected from the 
 1. *The species problem in Iris*, E. Anderson, 1936, *Annals of the Missouri Botanical Garden*, Volume 23, Issue 3, pages 457-469, 471-483, 485-501, 503-509 https://www.jstor.org/stable/2394164?origin=crossref%3Forigin%3Dcrossref&seq=1
 1. *Introduction to the Species Problem*, F. E. Zachos, 2016, *Species Concepts in Biology* https://link.springer.com/chapter/10.1007/978-3-319-44966-1_1
 1. *PCA versus LDA*, A. M. Martinez and A. C. Kak, 2001, *IEEE Transactions on Pattern Analysis and Machine Intelligence*, Volume 23, Issue 2, pages 228-233 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=908974
+1. https://www.w3schools.com/python/python_file_write.asp

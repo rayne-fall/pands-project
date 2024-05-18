@@ -6,14 +6,16 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
+import seaborn as sns
+from sklearn import metrics
+sns.set_theme()
 
 # loading the iris data set
 df = pd.read_csv("iris.csv")
 
 # create the file we'll save a summary of the variables in and open it in write mode
 file = open("Variable Summary.txt", "w")
-# give an overview of tha data annd add the averages for each variable to the text file
+# give an overview of tha data and add the averages for each variable to the text file
 file.write(f"This is an overview of the data in the set: \n\n{df}\n\nThese are the average values for each of the variables in this dataset: \n\n{df.describe()}\n\nCalculating the correlation coefficients for each pair of variables allows us to see if there's any correlation between them.\nThe closer the coefficient is to 1/-1, the stronger the correlation.\nThe closer the coefficient is to 0, the weaker the correlation")
 # close the text file
 file.close()
@@ -113,3 +115,12 @@ x_axis = ("Petal Width (cm)")
 y_axis  = ("Sepal Width (cm)")
 scatter = generate_scatter(variable1,variable2)
 
+# following section doesn't work yet
+'''
+plt.figure()
+# plot heatmap with labels for each square
+sns.heatmap(df(), annot=True, ) 
+plt.plot()
+# show heatmap
+plt.show()
+'''

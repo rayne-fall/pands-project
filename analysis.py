@@ -7,8 +7,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+
 # loading the iris data set
-df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv")
+df = pd.read_csv("iris.csv")
 
 # create the file we'll save a summary of the variables in and open it in write mode
 file = open("Variable Summary.txt", "w")
@@ -56,9 +57,9 @@ def generate_scatter(variable1,variable2):
     # define m and c for a line of best fit. the 1 means the highest exponent for x will be 1, giving a straight line.
     m, c = np.polyfit(x_scatter, y_scatter, 1)
     # create the scatter plot
-    ax.scatter(x_scatter,y_scatter) 
+    ax.scatter(x_scatter,y_scatter,) 
     # plot the line of best fit
-    ax.plot(x_scatter, m*x_scatter +c, color = "#c201a4")
+    ax.plot(x_scatter, m*x_scatter +c, color = "hotpink")
     # label the axes
     ax.set_xlabel(x_axis)
     ax.set_ylabel(y_axis)
@@ -111,5 +112,4 @@ variable2 = df["sepal_width"]
 x_axis = ("Petal Width (cm)")
 y_axis  = ("Sepal Width (cm)")
 scatter = generate_scatter(variable1,variable2)
-
 

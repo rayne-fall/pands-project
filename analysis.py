@@ -6,9 +6,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
-from sklearn import metrics
-sns.set_theme()
 
 # loading the iris data set
 df = pd.read_csv("iris.csv")
@@ -114,13 +111,3 @@ variable2 = df["sepal_width"]
 x_axis = ("Petal Width (cm)")
 y_axis  = ("Sepal Width (cm)")
 scatter = generate_scatter(variable1,variable2)
-
-# following section doesn't work yet
-'''
-plt.figure()
-# plot heatmap with labels for each square
-sns.heatmap(df(), annot=True, ) 
-plt.plot()
-# show heatmap
-plt.show()
-'''
